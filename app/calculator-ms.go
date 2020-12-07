@@ -78,12 +78,12 @@ func div(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	operationHistory = []service.Operation{}
-	fmt.Print("Calculator-Ms at http://0.0.0.0:8080")
+	fmt.Print("Calculator-Ms at http://0.0.0.0:8181")
 	http.HandleFunc("/calc/sum/", sum)
 	http.HandleFunc("/calc/sub/", sub)
 	http.HandleFunc("/calc/mul/", mul)
 	http.HandleFunc("/calc/div/", div)
 	http.HandleFunc("/calc/history", history)
 	http.HandleFunc("/calc", description)
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(":8181", nil)
 }

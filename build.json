@@ -1,0 +1,32 @@
+{
+  "builders":[
+    {
+      "name": "goCalculator-jenkins",
+      "type": "docker",
+      "image": "golang:latest",
+      "commit": true,
+      "changes": [
+        "EXPOSE 8180",
+        "ENTRYPOINT go run src/calculator-ms.go"      
+        ]
+    }
+  ],
+  
+  "provisioners":[
+    {
+      "type": "file",
+      "source": "app/",
+      "destination": "/go/src/"
+    }
+  ],
+  
+  "post-processors": [
+    [
+      {
+        "type": "docker-tag",
+        "repository": "gocalculator",
+        "tag": "jenkins"
+      }
+    ]
+  ]
+}
